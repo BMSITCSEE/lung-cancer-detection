@@ -14,11 +14,40 @@ This project detects lung cancer from CT scan images using deep learning techniq
 - Fully modular folder structure
 
 ## Dataset
-- [LIDC-IDRI](https://wiki.cancerimagingarchive.net/display/Public/LIDC-IDRI)
 - [LUNA16](https://luna16.grand-challenge.org)
 
 ## How to Run
 
 ```bash
-docker build -t lung-cancer .
-docker run -p 5000:5000 lung-cancer
+1. Clone the Repository
+git clone https://github.com/BMSITCSEE/lung-cancer-detection.git
+cd lung-cancer-detection
+
+2. Create and Activate Conda Environment
+conda create -n lung python=3.8 -y
+conda activate lung
+
+3. Install Dependencies
+pip install -r requirements.txt
+If you don't have a requirements.txt, generate it with:
+
+pip freeze > requirements.txt
+
+4. Run these files
+Train UNet (for segmentation preprocessing)
+python src/train_unet.py
+
+Train DenseNet (for 2D classification)
+python src/train_densenet.py
+
+Train 3D CNN (for 3D classification)
+python src/train_3dcnn.py
+
+Run evaluation:
+python src/evaluate.py
+
+Run explainability (e.g., Grad-CAM/SHAP):
+python src/explain.py
+
+5.Optional: If Using Jupyter Notebook
+jupyter notebook --no-browser --ip=0.0.0.0 --port=8888
