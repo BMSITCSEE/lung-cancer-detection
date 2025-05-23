@@ -1,0 +1,15 @@
+
+
+torch
+torchvision
+numpy
+matplotlib
+nibabel
+albumentations
+segmentation-models-pytorch
+flask
+pillow
+pytorch-grad-cam
+scikit-learn
+shap
+tqdm
